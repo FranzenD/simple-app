@@ -43,9 +43,6 @@ export default {
   },
   methods: {
     async getFood() {
-      // let numberOfItemsToAdd = this.numbers;
-      /* eslint-disable-next-line */
-
       if (!this.foodImages[this.category]) {
         this.$set(
           this.foodImages,
@@ -53,8 +50,6 @@ export default {
           await this.getFoodItems(this.numbers)
         );
       } else if (this.foodImages[this.category].length > this.numbers) {
-        // const numbersToRemove =
-        //   this.foodImages[this.category].length - this.numbers;
         this.foodImages[this.category].splice(this.numbers);
       } else if (this.foodImages[this.category].length < this.numbers) {
         const numberOfItemsToAdd =
