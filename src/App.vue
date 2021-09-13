@@ -46,6 +46,21 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+@media screen and (min-width: 1024px) {
+  #app {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #app {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
 select {
   margin-right: 1em;
 }
