@@ -1,6 +1,10 @@
 <template>
   <div class="food">
-    <Card v-for="(image, index) in foodImages" :key="index" :imageUrl="image" />
+    <Card
+      v-for="(image, index) in foodImages[category]"
+      :key="index"
+      :imageUrl="image"
+    />
   </div>
 </template>
 
@@ -15,7 +19,7 @@ export default {
   },
   data() {
     return {
-      foodImages: []
+      foodImages: {}
     };
   },
   props: {
@@ -39,13 +43,35 @@ export default {
   },
   methods: {
     async getFood() {
+      // let numberOfItemsToAdd = this.numbers;
+      /* eslint-disable-next-line */
+
+      if (!this.foodImages[this.category]) {
+        this.$set(
+          this.foodImages,
+          this.category,
+          await this.getFoodItems(this.numbers)
+        );
+      } else if (this.foodImages[this.category].length > this.numbers) {
+        // const numbersToRemove =
+        //   this.foodImages[this.category].length - this.numbers;
+        this.foodImages[this.category].splice(this.numbers);
+      } else if (this.foodImages[this.category].length < this.numbers) {
+        const numberOfItemsToAdd =
+          this.numbers - this.foodImages[this.category].length;
+
+        this.foodImages[this.category].push(
+          ...(await this.getFoodItems(numberOfItemsToAdd))
+        );
+      }
+    },
+    async getFoodItems(numberOfItems) {
       const imgArr = [];
-      for (let i = 0; i < this.numbers; i++) {
+      for (let i = 0; i < numberOfItems; i++) {
         const { image } = await foodService.getFood(this.category);
         imgArr.push(image);
       }
-
-      this.foodImages = [...imgArr];
+      return imgArr;
     }
   }
 };
