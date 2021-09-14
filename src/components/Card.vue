@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img :src="imageUrl" class="card__image" />
+    <img :src="imageUrl" alt="Picture of food" class="card__image" />
   </div>
 </template>
 
@@ -32,7 +32,6 @@ export default {
   &__image {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     object-fit: cover;
   }
 }
