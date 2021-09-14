@@ -23,7 +23,7 @@ export default {
   box-shadow: 5px 5px 10px 0 rgb(104, 103, 103);
   width: 200px;
   height: 200px;
-  padding: 2em;
+  padding: 1em;
   margin: 1em;
   display: flex;
   justify-content: center;
