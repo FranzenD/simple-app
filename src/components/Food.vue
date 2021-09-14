@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     async getFood() {
+      // TODO: Handle api errors
       if (!this.foodImages[this.category]) {
         this.$set(
           this.foodImages,
