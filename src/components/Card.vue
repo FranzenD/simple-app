@@ -29,6 +29,8 @@ export default {
   justify-content: center;
   align-items: center;
 
+  // TODO: Make cards smaller on mobile screen sizes.
+
   &__image {
     width: 100%;
     height: 100%;
