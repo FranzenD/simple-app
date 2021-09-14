@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <h1>Food!</h1>
-    <div>
+    <h1>Are you hungry?</h1>
+    <div class="categories">
       <label for="categories">Type of food: </label>
       <select if="categories" v-model="category">
         <option v-for="(category, index) in categories" :key="index">
@@ -63,5 +63,9 @@ export default {
 
 select {
   margin-right: 1em;
+}
+
+.categories {
+  margin-bottom: 10px;
 }
 </style>
