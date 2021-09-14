@@ -29,9 +29,9 @@ export default {
   },
   data() {
     return {
-      numbers: 5,
+      numbers: 6,
       category: 'burger',
-      categories: ['burger', 'pizza', 'pasta', 'dessert']
+      categories: ['burger', 'pizza', 'pasta', 'rice', 'dessert']
     };
   }
 };

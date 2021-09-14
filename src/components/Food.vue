@@ -74,8 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 .food {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  // TODO: add styling for better layout
 }
 </style>
