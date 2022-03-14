@@ -1,12 +1,12 @@
 <template>
   <div class="card">
-    <img :src="imageUrl" alt="Picture of food" class="card__image" />
+    <img :src="imageUrl" class="card__image" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Card',
+  name: 'FoodCard',
   props: {
     imageUrl: {
       type: String,

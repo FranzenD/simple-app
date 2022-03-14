@@ -3,7 +3,7 @@
     <h1>Are you hungry?</h1>
     <div class="categories">
       <label for="categories">Type of food: </label>
-      <select if="categories" v-model="category">
+      <select id="categories" v-model="category">
         <option v-for="(category, index) in categories" :key="index">
           {{ category }}
         </option>
@@ -15,23 +15,34 @@
         <option v-for="number in 20" :key="number">{{ number }}</option>
       </select>
     </div>
-    <Food :category="category" :numbers="numbers" />
+    <FoodGrid :category="category" :number-of-items="numbers" />
   </div>
 </template>
 
 <script>
-import Food from './components/Food.vue';
+import FoodGrid from '@/components/FoodGrid.vue';
 
 export default {
   name: 'App',
   components: {
-    Food
+    FoodGrid
   },
   data() {
     return {
       numbers: 6,
       category: 'burger',
-      categories: ['burger', 'pizza', 'pasta', 'rice', 'dessert']
+      categories: [
+        'biryani',
+        'burger',
+        'butter-chicken',
+        'dosa',
+        'idly',
+        'samosa',
+        'pizza',
+        'pasta',
+        'rice',
+        'dessert'
+      ]
     };
   }
 };
