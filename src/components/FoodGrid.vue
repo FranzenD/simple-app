@@ -1,5 +1,9 @@
 <template>
-  <div class="food-grid">
+  <div v-if="error" class="error">
+    Oops, something went wrong! Please try again!
+  </div>
+  <div v-else-if="loading" class="loading">Loading...</div>
+  <div v-else class="food-grid">
     <FoodCard
       v-for="(image, index) in foodImages[category]"
       :key="index"
@@ -19,7 +23,9 @@ export default {
   },
   data() {
     return {
-      foodImages: {}
+      foodImages: {},
+      error: false,
+      loading: false
     };
   },
   props: {
@@ -43,7 +49,6 @@ export default {
   },
   methods: {
     async getFood() {
-      // TODO: Handle api errors
       if (!this.foodImages[this.category]) {
         this.$set(
           this.foodImages,
@@ -62,6 +67,8 @@ export default {
       }
     },
     async getFoodItems(numberOfItems) {
+      // TODO: Handle api errors
+      // TOOD: Show progress indicator
       const imgArr = [];
       for (let i = 0; i < numberOfItems; i++) {
         const { image } = await foodService.getFood(this.category);
@@ -76,5 +83,14 @@ export default {
 <style lang="scss" scoped>
 .food-grid {
   // TODO: add styling for better layout
+}
+.error {
+  margin-top: 1em;
+  color: red;
+  font-size: 2em;
+}
+
+.loading {
+  margin-top: 1em;
 }
 </style>
