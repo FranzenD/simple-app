@@ -1,6 +1,6 @@
 <template>
-  <div class="food">
-    <Card
+  <div class="food-grid">
+    <FoodCard
       v-for="(image, index) in foodImages[category]"
       :key="index"
       :imageUrl="image"
@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import foodService from '../services/food';
-import Card from './Card.vue';
+import foodService from '@/services/food';
+import FoodCard from './FoodCard.vue';
 
 export default {
-  name: 'Food',
+  name: 'FoodGrid',
   components: {
-    Card
+    FoodCard
   },
   data() {
     return {
@@ -28,7 +28,7 @@ export default {
       required: true,
       default: 'burger'
     },
-    numbers: Number
+    numberOfItems: Number
   },
   created() {
     this.getFood();
@@ -37,7 +37,7 @@ export default {
     category() {
       this.getFood();
     },
-    numbers() {
+    numberOfItems() {
       this.getFood();
     }
   },
@@ -48,13 +48,13 @@ export default {
         this.$set(
           this.foodImages,
           this.category,
-          await this.getFoodItems(this.numbers)
+          await this.getFoodItems(this.numberOfItems)
         );
-      } else if (this.foodImages[this.category].length > this.numbers) {
-        this.foodImages[this.category].splice(this.numbers);
-      } else if (this.foodImages[this.category].length < this.numbers) {
+      } else if (this.foodImages[this.category].length > this.numberOfItems) {
+        this.foodImages[this.category].splice(this.numberOfItems);
+      } else if (this.foodImages[this.category].length < this.numberOfItems) {
         const numberOfItemsToAdd =
-          this.numbers - this.foodImages[this.category].length;
+          this.numberOfItems - this.foodImages[this.category].length;
 
         this.foodImages[this.category].push(
           ...(await this.getFoodItems(numberOfItemsToAdd))
@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.food {
+.food-grid {
   // TODO: add styling for better layout
 }
 </style>
