@@ -25,9 +25,6 @@ export default {
   height: 200px;
   padding: 1em;
   margin: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   // TODO: Make cards smaller on mobile screen sizes.
 
